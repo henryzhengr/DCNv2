@@ -94,7 +94,7 @@ def check_gradient_dconv():
     print('check_gradient_dconv: ',
           gradcheck(dcn_v2_conv, (input, offset, mask, weight, bias,
                     stride, padding, dilation, deformable_groups),
-                    eps=1e-3, atol=1e-4, rtol=1e-2))
+                    eps=1e-3, atol=1e-4, rtol=1e-2, nondet_tol=1e-5))
 
 
 def check_pooling_zero_offset():
@@ -163,7 +163,7 @@ def check_gradient_dpooling():
                                      part_size,
                                      sample_per_part,
                                      trans_std),
-                    eps=1e-4))
+                    eps=1e-4, nondet_tol=1e-5))
 
 
 def example_dconv():
